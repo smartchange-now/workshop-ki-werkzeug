@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#071d49">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>KI-Werkzeug · Workshop</title>
+  <style>
+    :root { color-scheme: light; --blue:#0653b6; --navy:#071d49; --ink:#101820; --soft:#f3f6f9; --ok:#16784b; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--soft); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; }
+    main { width:min(100%,680px); margin:auto; padding:32px 18px calc(48px + env(safe-area-inset-bottom)); }
+    header { padding:12px 4px 30px; }
+    .eyebrow { margin:0 0 8px; color:var(--blue); font-size:.78rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+    h1 { margin:0; color:var(--navy); font-size:clamp(2rem,10vw,3.4rem); line-height:.98; letter-spacing:-.045em; }
+    .intro { margin:18px 0 0; color:#4d5966; font-size:1rem; line-height:1.5; }
+    section { margin:0 0 18px; padding:24px; background:white; border:1px solid #dce3ea; border-radius:20px; box-shadow:0 8px 30px rgba(7,29,73,.07); }
+    .number { display:inline-grid; place-items:center; width:36px; height:36px; margin-bottom:16px; border-radius:50%; background:var(--navy); color:white; font-weight:800; }
+    h2 { margin:0; color:var(--navy); font-size:1.45rem; line-height:1.15; }
+    section p { margin:9px 0 22px; color:#52606d; line-height:1.45; }
+    button { width:100%; min-height:62px; border:0; border-radius:12px; padding:16px; background:var(--blue); color:white; font:800 1rem/1.15 inherit; letter-spacing:.035em; cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+    button:active { transform:scale(.985); }
+    button.copied { background:var(--ok); }
+    .status { min-height:25px; margin:12px 0 0; color:var(--ok); font-weight:800; text-align:center; }
+    footer { padding:12px 8px 0; color:#65717d; font-size:.9rem; line-height:1.45; text-align:center; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Workshop · KI-Praxis</p>
+      <h1>KI-Werkzeug</h1>
+      <p class="intro">Prompt kopieren, die KI Ihrer Wahl öffnen, einfügen und die eigene Region ergänzen.</p>
+    </header>
+
+    <section>
+      <span class="number">1</span>
+      <h2>Netzwerkzugänge finden</h2>
+      <p>Wo könnte sich in meiner Region ein zweiter Blick lohnen?</p>
+      <button type="button" data-prompt="prompt1" aria-describedby="status1">PROMPT 1 KOPIEREN</button>
+      <div class="status" id="status1" role="status" aria-live="polite"></div>
+    </section>
+
+    <section>
+      <span class="number">2</span>
+      <h2>Den zweiten Blick wagen</h2>
+      <p>Gefundene Zugänge kritisch prüfen und verdichten.</p>
+      <button type="button" data-prompt="prompt2" aria-describedby="status2">PROMPT 2 KOPIEREN</button>
+      <div class="status" id="status2" role="status" aria-live="polite"></div>
+    </section>
+
+    <footer>Keine Anmeldung erforderlich · Workshop-Arbeitsmittel</footer>
+  </main>
+
+  <textarea id="prompt1" hidden>Recherchiere aktuelle, öffentlich zugängliche Informationen für meine Region. Finde maximal 5 konkrete Zugänge, bei denen sich für einen Verkäufer einer Premiumlimousine ein zweiter Blick lohnen könnte – zum Beispiel seriöse Netzwerke, Institutionen, Verbände oder Veranstaltungen. Suche keine Privatpersonen und leite aus Wohnort, Beruf oder öffentlicher Sichtbarkeit weder Vermögen noch Kaufabsicht ab. Verwende nur öffentlich belegbare Informationen und aktuelle Quellen. Trenne belegbare Informationen klar von Annahmen und kennzeichne Unsicherheiten ausdrücklich.
+
+Meine Region ist: [REGION EINFÜGEN]
+
+Gib ausschließlich diese kompakte Tabelle aus:
+Zugang | Warum zweiter Blick? | Wie könnte ein Zugang entstehen? | Vorher prüfen | aktuelle Quelle
+
+Maximal 2 kurze Sätze pro Zugang. Keine Einleitung, kein Fazit, keine zusätzliche Priorisierung und keine weiteren Erläuterungen oder Verkaufstipps.</textarea>
+
+  <textarea id="prompt2" hidden>Bewerte die zuvor gefundenen Zugänge kritisch. Priorisiere höchstens 3 Zugänge, bei denen sich ein zweiter Blick tatsächlich lohnt. Wenn weniger als 3 Zugänge überzeugen, sage das ausdrücklich. Verwerfe Zugänge, für die kein glaubwürdiger Bezug erkennbar ist.
+
+Gib ausschließlich diese kompakte Tabelle aus:
+Zugang | Warum interessant? | Was spricht dagegen? | Nächster sinnvoller Schritt | aktuelle Quelle
+
+Maximal 2 kurze Sätze pro Zugang. Keine zusätzlichen Erläuterungen oder Verkaufstipps. Trenne belegbare Informationen klar von Annahmen und erfinde keine persönlichen Informationen, Kontakte oder Beziehungen.</textarea>
+
+  <script>
+    async function copyPrompt(button) {
+      const id = button.dataset.prompt;
+      const text = document.getElementById(id).value.trim();
+      const status = document.getElementById(id === 'prompt1' ? 'status1' : 'status2');
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (_) {
+        const helper = document.createElement('textarea');
+        helper.value = text;
+        helper.style.position = 'fixed';
+        helper.style.opacity = '0';
+        document.body.appendChild(helper);
+        helper.select();
+        document.execCommand('copy');
+        helper.remove();
+      }
+      const original = button.textContent;
+      button.textContent = '✓ PROMPT KOPIERT';
+      button.classList.add('copied');
+      status.textContent = 'Prompt kopiert';
+      setTimeout(() => {
+        button.textContent = original;
+        button.classList.remove('copied');
+        status.textContent = '';
+      }, 3000);
+    }
+    document.querySelectorAll('button[data-prompt]').forEach(button => {
+      button.addEventListener('click', () => copyPrompt(button));
+    });
+  </script>
+</body>
+</html>
