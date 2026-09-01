@@ -53,21 +53,47 @@
     <footer>Keine Anmeldung erforderlich · Workshop-Arbeitsmittel</footer>
   </main>
 
-  <textarea id="prompt1" hidden>Recherchiere aktuelle, öffentlich zugängliche Informationen für meine Region. Finde maximal 5 konkrete Zugänge, bei denen sich für einen Verkäufer einer Premiumlimousine ein zweiter Blick lohnen könnte – zum Beispiel seriöse Netzwerke, Institutionen, Verbände oder Veranstaltungen. Suche keine Privatpersonen und leite aus Wohnort, Beruf oder öffentlicher Sichtbarkeit weder Vermögen noch Kaufabsicht ab. Verwende nur öffentlich belegbare Informationen und aktuelle Quellen. Trenne belegbare Informationen klar von Annahmen und kennzeichne Unsicherheiten ausdrücklich.
+  <textarea id="prompt1" hidden>Recherchiere aktuelle, öffentlich zugängliche Informationen für meine Region.
+
+Finde maximal 5 konkrete und tatsächlich zugängliche Formate, bei denen sich für einen Verkäufer einer Premiumlimousine ein zweiter Blick lohnen könnte.
+
+Suche bevorzugt nach konkreten Veranstaltungen, Veranstaltungsreihen, Business-Communities, Unternehmernetzwerken, Mitgliedsformaten oder anderen realen Begegnungsanlässen, bei denen laut öffentlich belegbaren Informationen Unternehmer, Entscheider, Führungskräfte oder wirtschaftlich aktive Menschen zusammenkommen.
+
+Nenne nicht nur allgemeine Institutionen, Verbände, Kammern oder Wirtschaftsförderungen, wenn du keinen konkreten aktuellen Zugang über ein Format, eine Veranstaltung, ein Treffen oder eine Community findest.
+
+Ein guter Treffer sollte möglichst erkennen lassen, wie ein Verkäufer tatsächlich Zugang bekommen könnte – zum Beispiel über eine buchbare Veranstaltung, einen Gastbesuch, ein offenes Netzwerktreffen, eine Mitgliedschaft oder ein anderes öffentlich beschriebenes Teilnahmeformat.
+
+Berücksichtige auch thematische Zugänge wie Sport, Kultur oder andere Interessengemeinschaften, wenn ein persönlicher und authentischer Bezug des Verkäufers sinnvoll sein könnte. Unterstelle diesen Bezug aber nicht, sondern kennzeichne ausdrücklich, dass die persönliche Passung geprüft werden muss.
+
+Bewerte die persönliche Passung ausschließlich im Hinblick darauf, ob Art, Thema und Zugangsform des Formats authentisch zum Verkäufer passen könnten. Leite aus der beschriebenen Zielgruppe keine Eignung als potenzielle Fahrzeugkunden ab.
+
+Bevorzuge unterschiedliche Veranstalter oder Communities; nenne mehrere Formate desselben Anbieters nur, wenn sie sich in Zielgruppe und Zugang deutlich unterscheiden.
+
+Suche keine Privatpersonen und leite aus Wohnort, Beruf, Funktion, Mitgliedschaft oder öffentlicher Sichtbarkeit weder Vermögen noch Kaufabsicht ab. Verwende nur öffentlich belegbare Informationen und aktuelle Quellen. Trenne belegbare Informationen klar von Annahmen und kennzeichne Unsicherheiten ausdrücklich.
 
 Gib ausschließlich diese kompakte Tabelle aus:
-Zugang | Warum zweiter Blick? | Wie könnte ein Zugang entstehen? | Vorher prüfen | aktuelle Quelle
+Zugang | Warum zweiter Blick? | Wie könnte ein Zugang konkret entstehen? | Persönliche Passung / vorher prüfen | aktuelle Quelle
 
-Maximal 2 kurze Sätze pro Zugang. Keine Einleitung, kein Fazit, keine zusätzliche Priorisierung und keine weiteren Erläuterungen oder Verkaufstipps.
+Maximal 2 kurze Sätze pro Zugang. Keine Einleitung, kein Fazit, keine Priorisierung und keine zusätzlichen Verkaufstipps.
 
 Meine Region ist:</textarea>
 
-  <textarea id="prompt2" hidden>Bewerte die zuvor gefundenen Zugänge kritisch. Priorisiere höchstens 3 Zugänge, bei denen sich ein zweiter Blick tatsächlich lohnt. Wenn weniger als 3 Zugänge überzeugen, sage das ausdrücklich. Verwerfe Zugänge, für die kein glaubwürdiger Bezug erkennbar ist.
+  <textarea id="prompt2" hidden>Bewerte die zuvor gefundenen Zugänge kritisch und hilf mir zu entscheiden, welche davon tatsächlich einen nächsten Schritt wert sind.
+
+Priorisiere maximal 3 Zugänge. Du musst nicht auf 3 kommen: Wenn ein Zugang nicht konkret, aktuell oder glaubwürdig genug ist, verwerfe ihn.
+
+Bevorzuge Zugänge, bei denen ein realer nächster Schritt erkennbar ist – zum Beispiel eine konkrete Veranstaltung besuchen, als Gast teilnehmen, Kontakt zu einem Veranstalter aufnehmen oder eine Mitgliedschaft prüfen.
+
+Unterstelle keine persönlichen Interessen, Beziehungen, Vermögensverhältnisse oder Kaufabsichten. Wenn persönliche Passung entscheidend ist, formuliere sie als offene Prüffrage an mich.
+
+Nutze nur öffentlich belegbare Informationen und aktuelle Quellen. Prüfe die Informationen aus der ersten Recherche erneut und kennzeichne Unsicherheiten ausdrücklich.
 
 Gib ausschließlich diese kompakte Tabelle aus:
-Zugang | Warum interessant? | Was spricht dagegen? | Nächster sinnvoller Schritt | aktuelle Quelle
+Zugang | Warum lohnt sich ein zweiter Blick? | Was muss ich prüfen? | Nächster sinnvoller Schritt | aktuelle Quelle
 
-Maximal 2 kurze Sätze pro Zugang. Keine zusätzlichen Erläuterungen oder Verkaufstipps. Trenne belegbare Informationen klar von Annahmen und erfinde keine persönlichen Informationen, Kontakte oder Beziehungen.</textarea>
+Zugänge, die du nach der kritischen Prüfung nicht für konkret und prüfenswert hältst, nicht in die Tabelle aufnehmen.
+
+Maximal 2 kurze Sätze pro Zugang. Keine Einleitung, kein Fazit und keine zusätzlichen Verkaufstipps.</textarea>
 
   <script>
     async function copyPrompt(button) {
